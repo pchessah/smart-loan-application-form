@@ -1,1 +1,15 @@
-<p>intro works!</p>
+<div fxLayout="row wrap" class=" d-flex flex-wrap p-2">
+    <div fxFlex.lg="50">
+        <img class="mt-4" fxFlex="100" src="../../../assets/loan-home-img-removebg.png" alt="home-img" />
+    </div>
+    <div class="p-2" fxFlex.lg="50"  fxLayout="column" fxLayoutAlign="center center">
+        <h3>Get your loan in 4 simple steps...</h3>
+        <p class="m-5">
+            It is a long established fact that a reader will be distracted by the readable content of a page when
+            looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of
+            letters, as opposed to using 'Content here, content here', making it look like readable English. 
+        </p>
+        <button (click)="goToStepOne()" style="width: 50%;"  class="mr-5 ml-5"mat-raised-button color="primary">Get started</button>
+
+    </div>
+</div>

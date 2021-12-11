@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-intro',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IntroComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _router: Router) { }
 
-  ngOnInit(): void {
+  ngOnInit( ): void {
+  }
+
+  //Routes to first step of application form
+  goToStepOne()
+  {
+    this._router.navigateByUrl('/steps');
   }
 
 }
