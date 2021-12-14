@@ -1,1 +1,46 @@
-<p>step-summary works!</p>
+<mat-card *ngIf="dataHasLoaded" class="m-2" fxLayout="column">
+    <div fxLayout="column" fxLayoutAlign="center">
+        <strong class="title">  Personal Information  </strong>
+        <li class="summary-list-item">First Name: {{tempApplicantDetails.firstName}}</li>
+        <li class="summary-list-item">Last Name: {{tempApplicantDetails.lastName}}</li>   
+        <li class="summary-list-item">Email: {{tempApplicantDetails.email}}</li>
+        <li class="summary-list-item">Phone: {{tempApplicantDetails.phone}}</li>
+        <button class="mt-1" mat-stroked-button color="primary" (click)="editSection(3)"> Edit Section </button>
+    </div>
+    <hr/>
+
+    <div fxLayout="column" fxLayoutAlign="center">
+        <strong  class="title"> Loan Details </strong>
+        <li class="summary-list-item">Loan Amount: {{tempApplicantDetails.loanAmount}}</li>
+        <li class="summary-list-item">Loan Term: {{tempApplicantDetails.loanPurpose}}</li>
+        <button class="mt-1" mat-stroked-button color="primary" (click)="editSection(0)"> Edit Section </button>
+    </div>
+    <hr/>
+
+    <div fxLayout="column" fxLayoutAlign="center">
+        <strong  class="title"> Loan Repayment Terms </strong>
+        <li class="summary-list-item">Loan Term: {{tempApplicantDetails.loanTerm}}</li>
+        <li class="summary-list-item">Date of Repayment expected: {{tempApplicantDetails.loanRepaymentDate}}</li>
+        <button class="mt-1" mat-stroked-button color="primary"  (click)="editSection(1)"> Edit Section </button>
+    </div>
+    <hr/>
+
+    <div fxLayout="column" fxLayoutAlign="center">
+        <strong  class="title">Loan Item details</strong>
+        <div fxLayout="column" *ngIf="carLeasing">
+            <li class="summary-list-item">Car Make:  {{tempApplicantDetails.carMake}} </li>
+            <li class="summary-list-item">Car Model: {{tempApplicantDetails.carModel}} </li>
+            <button class="mt-1" mat-stroked-button color="primary" (click)="editSection(2)"> Edit Section </button>
+        </div>
+        <div fxLayout="column" *ngIf="mortgaging">
+            <li class="summary-list-item"> House Location: {{tempApplicantDetails.houseLocation}}</li>
+            <li class="summary-list-item"> No. of bedrooms: {{tempApplicantDetails.bedrooms}}</li>
+            <button class="mt-1" mat-stroked-button color="primary" (click)="editSection(2)"> Edit Section </button>
+        </div>       
+    </div>
+
+    <hr/>
+    
+    <button class="btn btn-success mt-3 p-2" (click)="submitFinalApplication()">Submit</button>
+
+</mat-card>
