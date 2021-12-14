@@ -1,1 +1,26 @@
-<p>step-two works!</p>
+<mat-card class="m-2">
+    <form [formGroup]="stepTwoFormGroup" (ngSubmit)="onSubmitRepaymentDetails()"  fxLayout="column" fxLayoutGap="10px">       
+        <mat-form-field appearance="fill">
+            <mat-label>How long do you want?</mat-label>
+            <mat-select formControlName="loanTerm" required>
+                <mat-option value="3 months">3 months</mat-option>
+                <mat-option value="6 months">6 months</mat-option>
+                <mat-option value="12 months">12 months</mat-option>
+              </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Preferred payment date after every period?</mat-label>
+            <input type="number" matInput  formControlName="loanRepaymentDate" required>
+            <mat-hint align="start"><strong>Enter preferred date of the month you wish to pay</strong> </mat-hint>
+            <mat-error *ngIf="stepTwoFormGroup.get('loanRepaymentDate')?.invalid">
+             {{getErrorMessage()}}
+            </mat-error>           
+          </mat-form-field>
+          
+        <div fxLayout="row" fxLayoutAlign="space-between center" style="width: 100%;">        
+          <button mat-raised-button  color="warn" matStepperPrevious>Back</button>
+          <button mat-raised-button color="primary" [disabled]="stepTwoFormGroup.invalid"  matStepperNext>Next</button>
+        </div>
+      </form>
+</mat-card>
