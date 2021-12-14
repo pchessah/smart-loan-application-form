@@ -1,6 +1,6 @@
 # SmartLoanApplicationForm
 
-To run locally, clone this repository locally using
+To run locally, clone this repository locally using https://github.com/pchessah/smart-loan-application-form.git
 Then  open the terminal on Mac OS or linux based OS and run npm install.
 For windows open the powershell terminal and run npm intsall.
 Make sure the terminal path is where the cloned repositiry is saved.
