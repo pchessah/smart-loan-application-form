@@ -1,44 +1,40 @@
-<div class="p-5 m-5">
-    <mat-stepper #stepper>
-        <mat-step [stepControl]="firstFormGroup" errorMessage="Name is required.">
-          <form [formGroup]="firstFormGroup">
-            <ng-template matStepLabel>Fill out your name</ng-template>
-            <mat-form-field appearance="fill">
-              <mat-label>Name</mat-label>
-              <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-            </mat-form-field>
-            <div>
-              <p>Go to a different step to see the error state</p>
-              <button mat-button matStepperNext>Next</button>
-            </div>
-          </form>
-        </mat-step>
-        <mat-step [stepControl]="secondFormGroup" errorMessage="Address is required.">
-          <form [formGroup]="secondFormGroup">
-            <ng-template matStepLabel>Fill out your address</ng-template>
-            <mat-form-field appearance="fill">
-              <mat-label>Address</mat-label>
-              <input matInput placeholder="Ex. 1 Main St, New York, NY" formControlName="secondCtrl"
-                     required>
-            </mat-form-field>
-            <div>
-              <p>Go to a different step to see the error state</p>
-              <button mat-button matStepperPrevious>Back</button>
-              <button mat-button matStepperNext>Next</button>
-            </div>
-          </form>
-        </mat-step>
-        <mat-step>
-          <ng-template matStepLabel>Done</ng-template>
-          <p>You are now done.</p>
-          <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button (click)="stepper.reset()">Reset</button>
-          </div>
-        </mat-step>
-      </mat-stepper>
-      
+<div fxLayout="row" fxLayoutAlign="center center">
+  <ng-container [ngSwitch]="stepperOrientation | async">
+    <div *ngSwitchCase="'horizontal'"></div>
+    <div *ngSwitchCase="'vertical'"></div>
+  </ng-container>
+  <mat-stepper  #stepper style="width:100%" [orientation]="(stepperOrientation | async)!">
+    <mat-step>
+      <ng-template matStepLabel>Enter loan details</ng-template>
+      <ng-template matStepContent>
+        <app-step-one></app-step-one>
+      </ng-template>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Fill loan Repayment terms</ng-template>
+      <ng-template matStepContent>
+        <app-step-two></app-step-two>
+      </ng-template>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Confirm loan item details</ng-template>
+      <ng-template matStepContent>
+        <app-step-three></app-step-three>
+      </ng-template>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Enter Personal Details</ng-template>
+      <ng-template matStepContent>
+        <app-step-four></app-step-four>
+      </ng-template>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Summary</ng-template>
+      <ng-template matStepContent>
+        <app-step-summary (editSectionEvt)="editSection($event)" ></app-step-summary>
+      </ng-template>
+    </mat-step>
+  </mat-stepper>
+
 
 </div>
-
-
