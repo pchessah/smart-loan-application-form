@@ -1,5 +1,30 @@
-<mat-card>
-    <form>
-        
-    </form>
+
+  <mat-card class="m-2">
+    <form (ngSubmit)="onSubmitLoanDetails()" [formGroup]="stepOneFormGroup" fxLayout="column" fxLayoutGap="10px">
+        <mat-form-field appearance="fill">
+          <mat-label>How much do you want?</mat-label>
+          <input matInput type="number"  formControlName="loanAmount" required>
+          <p matSuffix>€</p>
+          <mat-error *ngIf="stepOneFormGroup.get('loanAmount')?.hasError('required')">
+            Loan amount is required
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Enter Purpose of loan</mat-label>
+            <mat-select formControlName="loanPurpose" required>
+                <mat-option value="car">Car Lease</mat-option>
+                <mat-option value="mortgage">Mortgage Loan</mat-option>
+              </mat-select>
+              <mat-error *ngIf="stepOneFormGroup.get('loanPurpose')?.hasError('required')">
+                Loan purpose is required
+              </mat-error>
+          </mat-form-field>
+        <div>            
+          <button mat-raised-button color="primary" type="submit" [disabled]="!stepOneFormGroup.valid" matStepperNext>Next</button>
+        </div>
+      </form>
 </mat-card>
+
+
+
